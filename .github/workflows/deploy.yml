@@ -1,3 +1,4 @@
+# Astro website deployment
 name: Deploy to GitHub Pages
 
 on:
