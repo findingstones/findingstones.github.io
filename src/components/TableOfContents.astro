@@ -1,0 +1,90 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// We only want the main article sections and subsections.
+// H1 is the article title, so it is deliberately excluded.
+const tocHeadings = headings.filter(
+  (heading) => heading.depth === 2 || heading.depth === 3
+);
+---
+
+{
+  tocHeadings.length >= 2 && (
+    <nav class="toc" aria-label="Table of contents">
+      <div class="toc-title">Contents</div>
+
+      <ol>
+        {
+          tocHeadings.map((heading) => (
+            <li class:list={{ "toc-subsection": heading.depth === 3 }}>
+              <a href={`#${heading.slug}`}>
+                {heading.text}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+  )
+}
+
+<style>
+  .toc {
+    margin: 0 0 3.5rem;
+    padding: 1.35rem 0 1.45rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  .toc-title {
+    margin-bottom: 0.75rem;
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .toc li {
+    margin: 0.35rem 0;
+    line-height: 1.45;
+  }
+
+  .toc li.toc-subsection {
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .toc a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+</style>
