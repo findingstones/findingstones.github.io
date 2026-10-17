@@ -2,6 +2,8 @@
 title: 'Remaining Hypothetical'
 description: 'On imagined identities, unmet needs, and the distance between who you are and who you want to become.'
 pubDate: 'Oct 11 2026'
+featured: true
+heroImage: './images/remaining-hypothetical.png'
 ---
 
 There is a certain sweetness in imagining idealised versions of yourself. Versions that embody your aspirations and inhabit a world moulded to their potential.

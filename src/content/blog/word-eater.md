@@ -2,6 +2,8 @@
 title: 'Word Eater'
 description: 'On consuming knowledge'
 pubDate: 'Oct 14 2026'
+featured: true
+heroImage: './images/word-eater.png'
 ---
 
 Some of our identities remain in the fantasy world [^remain-hypothetical]. They give us the carrot and the stick. Others invite us to walk towards them.

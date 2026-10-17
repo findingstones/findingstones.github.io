@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  variant?: 'featured' | 'latest';
+}
+
+const { post, variant = 'latest' } = Astro.props;
+---
+
+<a class={`fs-card fs-card--${variant}`} href={`/blog/${post.id}/`}>
+  <div class="fs-card__media">
+    {
+      post.data.heroImage ? (
+        <Image
+          src={post.data.heroImage}
+          alt=""
+          width={1200}
+          height={800}
+          class="fs-card__image"
+          loading="lazy"
+        />
+      ) : (
+        <div class="fs-card__placeholder" aria-hidden="true">
+          <span class="fs-card__stone fs-card__stone--one"></span>
+          <span class="fs-card__stone fs-card__stone--two"></span>
+          <span class="fs-card__stone fs-card__stone--three"></span>
+        </div>
+      )
+    }
+  </div>
+  <div class="fs-card__body">
+    <div class="fs-card__meta">
+      <FormattedDate date={post.data.pubDate} />
+      {variant === 'featured' && <span class="fs-card__dot">· Featured</span>}
+    </div>
+    <h3>{post.data.title}</h3>
+    <p>{post.data.description}</p>
+  </div>
+</a>

@@ -1,16 +1,25 @@
+
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import ArticleCard from '../components/ArticleCard.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import '../styles/home.css';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const recentPosts = posts.slice(0, 8);
+// Four featured posts: one large and three smaller.
+const featuredPosts = posts
+  .filter((post) => post.data.featured)
+  .slice(0, 4);
+
+const [leadPost, ...otherFeaturedPosts] = featuredPosts;
+
+const latestPosts = posts.slice(0, 6);
 ---
 
 <!doctype html>
@@ -18,47 +27,56 @@ const recentPosts = posts.slice(0, 8);
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-
   <body>
     <Header />
 
-    <main class="page-shell">
-      <section class="home-intro">
-        <h1>{SITE_TITLE}</h1>
+    <main class="fs-home">
 
+      <section class="fs-home__intro" aria-labelledby="home-title">
+        <h1 id="home-title">{SITE_TITLE}</h1>
         <p>
-          Notes on things I am learning, building, trying, and changing my mind about.
+          Notes on things I am learning, building, trying,
+          and changing my mind about.
         </p>
       </section>
 
-      <section>
-        <div class="section-header">
-          <h2>Recent writing</h2>
+      {
+        leadPost && (
+          <section class="fs-home__section" aria-labelledby="featured-title">
+
+            <div class="fs-home__section-heading">
+              <h2 id="featured-title">Featured</h2>
+            </div>
+
+            <div class="fs-home__feature-lead">
+              <ArticleCard post={leadPost} variant="featured" />
+            </div>
+
+            {otherFeaturedPosts.length > 0 && (
+              <div class="fs-home__feature-secondary">
+                {otherFeaturedPosts.map((post) => (
+                  <ArticleCard post={post} variant="featured" />
+                ))}
+              </div>
+            )}
+
+          </section>
+        )
+      }
+
+      <section class="fs-home__section" aria-labelledby="latest-title">
+        <div class="fs-home__section-heading">
+          <h2 id="latest-title">Latest</h2>
           <a href="/blog/">All writing →</a>
         </div>
 
-        <ol class="post-list">
-          {
-            recentPosts.map((post) => (
-              <li class="post-row">
-                <div>
-                  <h3>
-                    <a href={`/blog/${post.id}/`}>
-                      {post.data.title}
-                    </a>
-                  </h3>
-
-                  <p>{post.data.description}</p>
-                </div>
-
-                <div class="post-date">
-                  <FormattedDate date={post.data.pubDate} />
-                </div>
-              </li>
-            ))
-          }
-        </ol>
+        <div class="fs-home__latest">
+          {latestPosts.map((post) => (
+            <ArticleCard post={post} />
+          ))}
+        </div>
       </section>
+
     </main>
 
     <Footer />

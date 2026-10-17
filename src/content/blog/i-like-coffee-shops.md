@@ -2,6 +2,8 @@
 title: 'I Like Coffee Shops'
 description: 'On the pleasures of coffee shops'
 pubDate: 'Oct 17 2026'
+featured: true
+heroImage: './images/coffee-shop.png'
 ---
 
 
