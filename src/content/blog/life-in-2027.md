@@ -3,7 +3,7 @@ title: 'Life in 2027'
 description: 'Stop pretending'
 pubDate: 'Oct 26 2026'
 featured: true
-heroImage: './images/i-want-to-live.jpeg'
+heroImage: './images/life-in-2027.png'
 ---
 
 I am stressed just thinking about this. Where will I be in November 2027, roughly one year from now?
@@ -12,9 +12,9 @@ Will I let life direct me as it has done throughout most of my life? Will I let 
 
 Or will I turn my back on the sun, open my eyes to the turbulent waters, and swim upstream? 
 
-My mind, which is usually pretty good at fantasising about a life in which all my goals are fully realised [REF], seems scared of even imagining where I might be just one year from now. Am I only allowed to wildly fantasise about a timeless future?
+My mind, which is usually pretty good at fantasising about a life in which all my goals are fully realised [^remain-hypothetical], seems scared of even imagining where I might be just one year from now. Am I only allowed to wildly fantasise about a timeless future?
 
-A predictably boring explanation for this anxiety is that next year is close enough for me to feel its weight. Next year will come, and I will be held accountable. The inquisitor will hammer relentlessly on the inside of my skull [REF]. And I don't want to deal with that. I am tired of carrying the weight of my own expectations on my shoulders. But I am also tired of living a predictable life with unrealised dreams. Living a jester life.
+A predictably boring explanation for this anxiety is that next year is close enough for me to feel its weight. Next year will come, and I will be held accountable. The inquisitor will hammer relentlessly on the inside of my skull [HOLD]. And I don't want to deal with that. I am tired of carrying the weight of my own expectations on my shoulders. But I am also tired of living a predictable life with unrealised dreams. Living a jester life.
 
 Let's start with the obvious outcome: the predictable path.
 
@@ -44,3 +44,6 @@ God, please let me fail or win. I don't care. I just want an outcome.
 Let's see how I measure up in a year's time. 
 
 See you then, future me.
+
+
+[^remain-hypothetical]: Finding Stones, [*Remaining Hypothetical*](../remaining-hypothetical/).
